@@ -38,7 +38,7 @@ public:
 		//move-конструктор должен работать так, как не должен работать конструктор копирования(диаметральная противоположность)
 		this->size = other.size;
 		this->str = other.str;
-		cout << "MoveConstructor:\t" << this << endl;
+		cout << "MoveConstructor:\t\t" << this << endl;
 		other.str = nullptr;
 		other.size = 0;
 	}
