@@ -22,7 +22,12 @@ public:
 	{
 		//this->size = strlen(str) + 1;
 		//this->str = new char[size] {};
-		for (int i = 0; i < size; i++)this->str[i] = str[i];
+		//for (int i = 0; i < size; i++)this->str[i] = str[i];
+		strcpy(this->str, str);
+		//strcpy - string copy
+		//strcpy - (dst, src);
+		//dst - destination, строка получатель
+		//src - source, строка источник, строка, из которой копируется содержимое.
 		cout << "Constructor:\t\t" << this << endl;
 	}
 	String(const String& other):String(other.str)
@@ -103,10 +108,19 @@ public:
 String operator+(const String& left, const String& right)
 {
 	String buffer(left.get_size() + right.get_size() - 1);
+	strcpy (buffer.get_str(), left.get_str());
+	strcat(buffer.get_str(), right.get_str());
+#ifdef fori
 	for (int i = 0; i < left.get_size(); i++)
 		buffer[i] = left[i];
 	for (int i = 0; i < right.get_size(); i++)
 		buffer[i + left.get_size() - 1] = right[i];
+#endif // fori
+	//strcat - выполняет контатенацию строк
+	//strcat(dst,src);
+	//dst - строка получатель
+	//src - строка источник
+	// В dst будет объеденная строка
 	return buffer;
 }
 ostream& operator<<(ostream& os, const String& obj)
